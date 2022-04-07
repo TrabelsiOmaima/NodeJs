@@ -1,0 +1,6 @@
+line 1 : pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+
+dzdzad
+azdazdazdzaaaaaaaaaaaaaa 
+Line 2 : function now() { [native code] }
