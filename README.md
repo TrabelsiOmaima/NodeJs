@@ -110,8 +110,22 @@ _ : store value l rslt li 9balha :
 
 # 7. Creating a Simple Web Server :
 
-- create a web server, capable of :
-    - accepting requestes
-    - sending responses
+-   learn how to create a simple web server using NODE JS. In order to create a web server, there are two steps involved:
+        0. import http module :
+            let http = require('http') ;
+
+        1. Creating a server :
+                let server = http.createServer( (req, res) => {
+                    res.end('Hello from the server ! ');  /
+                    console.log(res);
+                }) ;
+
+        2. Listening to requests :
+            server.listen(8000, '127.0.0.1', () => {
+                console.log('server has started...'); 
+            });
+
+
+
 
 

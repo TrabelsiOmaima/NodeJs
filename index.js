@@ -1,37 +1,32 @@
-// import fs module (file system)
-let fs = require('fs');
+
+
+// ------- 0. import http module
+let http = require('http') ;
 
 
 
-// # 4.ynchronous  read and write  -----------------------------
-
-let textIn = fs.readFileSync('./txt/input.txt', 'utf-8');
-console.log(textIn);
-
-fs.writeFileSync('./txt/output.txt', `line 1 : ${textIn} \nLine 2 : ${Date.now}`);
+// ------- 1. create the server :
+// http.createSErver(callback functh (arrow function))
+// a. create a server
+// b. for each request, the callback function will get executed
 
 
-// # 6. Asynchronous read and write ---------------------------------
-
-// readFile(file, codeFile, callbackFunction(error, variableToSaveDataFile))
-fs.readFile('./txt/start.txt', 'utf-8' , (err, data1) => {
-    console.log(data1) ;
-    fs.readFile(`./txt/${data1}.txt`, 'utf-8' , (err, data2) => {
-        console.log(data2);
-        fs.readFile(`./txt/append.txt`, 'utf-8' , (err, data3) => {
-            console.log(data3);
+let server = http.createServer( (req, res) => {
+    // text request 
+    // .end  to send simple response
+    res.end('Hello from the server ! ');  // show in the web page
+    console.log(res);
+}) ;
 
 
-            fs.writeFile('./txt/final.txt', `${data2} \n\n ${data3}`, function(){
-                console.log('file is written !');
-            })
 
-        })
-    })
+// 2 . start the server :  ( listening to encaming requiestes)
+// know the server start to  handel requeste 
 
-
-});  // exécute 2nd en background : Asynchronous 
+server.listen(8000, '127.0.0.1', () => {
+    console.log('server has started...'); 
+});
 
 
-console.log('file is reading..'); // exécute 1st by node, cuz it more fast
+
 
