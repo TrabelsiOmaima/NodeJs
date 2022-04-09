@@ -196,3 +196,4 @@ _ : store value l rslt li 9balha :
 
 
 
+# 10. 
