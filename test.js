@@ -1,3 +1,7 @@
-console.log(__dirname)
-console.log(`mmmmm ${__dirname}mmmmmm`)
+let fs = require('fs');
 
+let card = fs.readFileSync(`${__dirname}/templates/template-card.html`, `utf-8`);
+
+let output = card.replace(/{NAME}/g, 'iphone');
+
+console.log(output);

@@ -166,7 +166,7 @@ _ : store value l rslt li 9balha :
 
     - here , we will create url '/api' ,  when user "REQUEST" this url we send him a json data (format string data pas format javascript object) :
 
-
+    - placeholder (html file) : {CARDNAME}, {PRICE}
     - 1st version :  read json file async 
                 + url  /api :
                     }else if (path === '/api') {
@@ -196,4 +196,87 @@ _ : store value l rslt li 9balha :
 
 
 
-# 10. 
+# 10.  Creating template & send HTML Response :
+
+        - here we are going to create an HTML template, and we are going to send the HTML content to as a response to the client. 
+        - We are going to display the products from the JSON file in the webpage in a formatted and styled way.
+        - html placeholder = {PRODUCTCARD} {NAME}
+
+        -  get values from JSON file, and put it in HTML form, then send it to client format response when he loads /overview URL :
+
+
+
+- Code steps
+
+
+    +   templates> template-overview.html> 
+            <body>
+                <div class="container">
+                <h1>iPhone Store</h1>
+
+                <div class="products-container">
+                    {PRODUCTCARD}  // remplace template-card.html
+                </div>
+                </div>
+            </body>
+
+
+
+    +   templates> template-card.html> 
+
+        from : 
+            <img src="https://www.google.com/imgres?M&vet=12ahUKEwipqcKcyof3AhUBi_0f3A" class="product_image">
+            <div class="product_price"><b>Price:</b> 720 $</div>
+            <a class="product_link" href="#">
+                <span>Product Detail</span>
+            </a>
+        to : 
+            <img src="{IMAGE}" class="product_image">
+            <div class="product_price"><b>Price:</b> {PRICE} $</div>
+            <a class="product_link" href="products?id={ID}">
+                <span>Product Detail</span>
+            </a>
+
+
+
+
+    + index.js>
+        - read templates file :
+            let overview = fs.readFileSync(`${__dirname}/templates/template-overview.html`, `utf-8`);
+            let card = fs.readFileSync(`${__dirname}/templates/template-card.html`, `utf-8`);
+
+        - fnct (html_template,  json_data) replace each html variable {NAME} with it correspendent in json file data.name : 
+
+                let replaceTemplate = function(template, data) {  
+                    // (html_template,  json_data)
+                    // let output = template.replace({IMAGE}, data.productImage);
+                    // just replace 1st occurence of IMAGE => slt : regix / /g: g global
+                    let output = template.replace(/{IMAGE}/g, data.productImage);
+                    output = output.replace(/{NAME}/g, data.name);
+                    output = output.replace(/{PRICE/g, data.price);
+                    output = output.replace(/{ROM}/g, data.ROM);
+                    output = output.replace(/{COLOR}/g, data.color);
+                    output = output.replace(/{CAMERA}/g, data.camera);
+                    output = output.replace(/{ID}/g, data.id);
+                    return output;
+
+                }
+   
+
+
+                if (path === '/' || path === '/overview'){
+                        // loop data.json (array of objects) : + replace template'card' with json values 'prod'
+                    let cardHtml =  pData.map( (prod) => replaceTemplate(card, prod)).join(''); //map return array of string objects , 'output' ,  .join(') : concatinate all  the array obj en seul string
+                    console.log(cardHtml);
+
+
+
+                - replace  {PRODUCTCARD}  with cardHtml and send it as a res :
+                        let output = overview.replace('{PRODUCTCARD}', cardHtml);
+                        res.writeHead(200, {   'content-type' : 'text/html', }) ; 
+                        res.end(output);
+
+
+
+
+# 11. 
