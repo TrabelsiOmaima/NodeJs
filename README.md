@@ -159,5 +159,40 @@ _ : store value l rslt li 9balha :
 
 
 
+# 9. Creating a simple Web API :
+
+    - API is a service from  which, we can request some date
+    - JSON : file format tab of (objects,)
+
+    - here , we will create url '/api' ,  when user "REQUEST" this url we send him a json data (format string data pas format javascript object) :
+
+
+    - 1st version :  read json file async 
+                + url  /api :
+                    }else if (path === '/api') {
+                + read json file async  : ,   "./"   : represent current folder, not pro , we change it with :  __dirname 
+                        fs.readFile(`${__dirname}/dev-data/data.json`, `utf-8`, (err, data) => {
+                + convert JSON string to js object :
+                        let pData = JSON.parse(data);
+                + set content type to json before send response :
+                        res.writeHead(200, {  'content-type' : 'application/json' }) ; 
+                + sending response :
+                    res.end(data);
+                });
+
+
+    => the read of data.json Asnc and the convert of it to JavaScript object,  for each time a client access to /api url => affect la performance of site => slt read and convert the data.json once ( sync) :
+    
+        + read JSON data once (sync) + convert JSON to JavaScript object also once :
+            let data = fs.readFileSync(`${__dirname}/dev-data/data.json`, `utf-8`);
+            let pData = JSON.parse(data);
+
+        +   }else if (path === '/api') {
+                res.writeHead(200, {  'content-type' : 'application/json' }) ; 
+                res.end(data);
+
+            }
+
+
 
 

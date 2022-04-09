@@ -1,0 +1,193 @@
+<html>
+<head>
+	<style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+
+      html {
+        font-size: 62.5%;
+        box-sizing: border-box;
+      }
+
+      body {
+        padding: 5rem 5rem 10rem;
+        line-height: 1.7;
+        font-family: 'Nunito Sans', sans-serif;
+        color: #444;
+        min-height: 100vh;
+        background: linear-gradient(to bottom, #F7F9F9, #85929E);
+      }
+
+      .container {
+        width: 95rem;
+        margin: 0 auto;
+      }
+
+      .product {
+        width: 95rem;
+        margin: 0 auto;
+        margin-top: 9rem;
+        background: white;
+        box-shadow: 0 3rem 6rem 1rem rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .product_hero {
+        position: relative;
+        height: 35rem;
+        overflow: hidden;
+		background: linear-gradient(to bottom, #FFFFFF, #F7F9F9);
+		padding: 20 380px;
+      }
+
+      .product_hero::before {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+        z-index: 100;
+		
+      }
+
+      .product_back:link,
+      .product_back:visited {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        z-index: 1000;
+        color: #444;
+        background-color: white;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+        border-radius: 100rem;
+        padding: 0 2rem;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+      }
+
+      .product_back:hover,
+      .product_back:active {
+        background-color: #85929E;
+      }
+
+      .product_name {
+        background: linear-gradient(to bottom, #F7F9F9, #85929E);
+        padding: 1rem;
+        font-family: 'Megrim', sans-serif;
+        font-size: 4rem;
+        color: #444;
+        text-align: center;
+        word-spacing: 2px;
+      }
+
+      .product_details {
+        background-color: #eee;
+        padding: 4rem 6rem;
+        font-size: 1.6rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1.5rem;
+      }
+
+      .product_description {
+        padding: 5rem 6rem;
+        font-size: 1.6rem;
+        line-height: 1.8;
+      }
+
+      .product_link:link,
+      .product_link:visited {
+        display: block;
+        background-color: #85929E;
+        color: #444;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem;
+        text-align: center;
+        transform: scale(1.07) skewX(-20deg);
+        box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .product__link:hover,
+      .product__link:active {
+        background-color: #9be15d;
+        transform: scale(1.1) skewX(-20deg);
+      }
+
+      .product__link span {
+        transform: skewX(20deg);
+      }
+
+      .emoji-left {
+        font-size: 2rem;
+        margin-right: 1rem;
+      }
+
+      .emoji-right {
+        font-size: 2rem;
+        margin-left: 1rem;
+      }
+
+      .not-organic {
+        display: none;
+      }
+	  </style>
+</head>
+<body>
+    <div class="container">
+      <figure class="product">
+        <a href="/overview" class="product_back">
+          <span class="emoji-left"></span>Back
+        </a>
+        <div class="product_hero">
+          <img src="{IMAGE}" class="product_image">
+        </div>
+        <h2 class="product_name">{NAME}</h2>
+        <div class="product_details">
+		  <p>Price: {PRICE} $</p>
+          <p>Color: {COLOR}</p>
+          <p>ROM: {ROM} GB</p>
+		  <p>Model Name: {MODEL}</p>
+        </div>
+		<h2 class="product_name">More details</h2>
+        <div class="product_details">
+		<ul>
+			<li>{SIZE}</li>
+			<li>{CAMERA}</li>
+			<li>{MODELNUMBER}/A</li>
+		</ul>
+        </div>
+  
+        <a href="#" class="product_link">
+          <span class="emoji-left"></span>
+          <span>Add to shopping card ({PRICE} $)</span>
+        </a>
+  
+        <p class="product_description">
+         {DESCRIPTION}
+        </p>
+      </figure>
+      
+    </div>
+
+</body>
+</html>

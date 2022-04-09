@@ -1,6 +1,2 @@
-line 1 : pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
-pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
-
-dzdzad
-azdazdazdzaaaaaaaaaaaaaa 
-Line 2 : function now() { [native code] }
+Apple watch description: To make the best use of its size and location on your wrist, Apple Watch has all-new interactions and technologies. They let you do familiar things more quickly and conveniently. As well as some things that simply weren’tcls
+Created Date 1629119090941
