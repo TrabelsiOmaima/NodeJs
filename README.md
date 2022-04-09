@@ -114,16 +114,48 @@ _ : store value l rslt li 9balha :
         0. import http module :
             let http = require('http') ;
 
-        1. Creating a server :
+        1. Creating a server :  for each request, the callback function will get executed
                 let server = http.createServer( (req, res) => {
                     res.end('Hello from the server ! ');  /
                     console.log(res);
                 }) ;
 
-        2. Listening to requests :
+        2. Listening to requests : know the server start to  handel requeste
             server.listen(8000, '127.0.0.1', () => {
                 console.log('server has started...'); 
             });
+
+
+        http://127.0.0.1:8000/  
+
+
+
+# 8. Routing in NODE JS :
+    - URL example : http://127.0.0.1:8000/product
+    - in the old time, we specified the : file name (mapping)
+        http://127.0.0.1:8000/product   : product is a physical file name  
+    -  with node js we specified the : route name : (routing)
+        http://127.0.0.1:8000/product  : product here is a root name
+
+
+    - Routing =  ( # actions for # urls)  : (we use EXPRESS tool, but not now)
+
+            let url = require('url'); 
+            let server = http.createServer( (req, res) => {
+                let path = req.url; 
+                if (path === '/' || path === '/overview'){
+                    res.end('this is overwiew page'); 
+                }else if (path === '/products'){
+                    res.end('this is products page');
+                }else {  
+                    res.writeHead(404, {  
+                        'content-type' : 'text/html',
+                        'my-header' : 'Hey-there'
+                    }) ;
+                    res.end('<h1>page not found ! </h1>');  
+                }
+            }) ;
+
 
 
 
