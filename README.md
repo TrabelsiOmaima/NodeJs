@@ -289,7 +289,7 @@ _ : store value l rslt li 9balha :
 
 
 
-  - Code steps :
+  + Code steps :
 
         - template-product.html : create placeholder {PLACEHOLDER} selon need ...
         - index.js : read product html file ...   
@@ -312,3 +312,42 @@ _ : store value l rslt li 9balha :
 
 
 # 12. Creating a Custom Module :
+            - a module just another script(.js) file , from there we can export some values,
+            and those exports values can be used in other script files , by importing it 
+            - PS : each script file in NodeJS is a module : example : index.js
+
+
+            - there, we will learn : create a module, export it, import it, and use it :
+
+
+            + Code steps :
+
+            create a module  :
+            Module>replaceTemplate.js (cut..paste replaceTEmplate() from index.js)
+
+            - export a module : 
+            from : 
+                let replaceTemplate = function(template, data) {  
+            to :
+                module.exports = function(template, data) {  
+
+            - import a module : index.js
+                let replaceTemplate = require('./Modules/replaceTemplate');
+
+            - usea module :
+                let cardHtml =  pData.map( (prod) => replaceTemplate(card, prod)).join(''); 
+
+
+            - template-product : back button : 
+                    <a href="/overview" class="product_back">
+
+
+
+
+
+
+
+
+
+
+

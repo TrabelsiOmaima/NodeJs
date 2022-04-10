@@ -1,4 +1,4 @@
-// import section
+// import module section
 let fs = require('fs');
 let http = require('http') ;
 let url = require('url');
@@ -12,22 +12,8 @@ let card = fs.readFileSync(`${__dirname}/templates/template-card.html`, `utf-8`)
 let product = fs.readFileSync(`${__dirname}/templates/template-product.html`, `utf-8`);
 
 
-
-let replaceTemplate = function(template, data) {  
-    let output = template.replace(/{IMAGE}/g, data.productImage);
-     output = output.replace(/{NAME}/g, data.name);
-     output = output.replace(/{PRICE}/g, data.price);
-     output = output.replace(/{ROM}/g, data.ROM);
-     output = output.replace(/{COLOR}/g, data.color);
-     output = output.replace(/{CAMERA}/g, data.camera);
-     output = output.replace(/{ID}/g, data.id);
-     output = output.replace(/{MODEL}/g, data.modeName);
-     output = output.replace(/{MODELNUMBER}/g, data.modelNumber);
-     output = output.replace(/{DESCRIPTION}/g, data.Description);
-     output = output.replace(/{SIZE}/g, data.size);
-
-     return output;
-}
+// import module : replaceTemplate 
+let replaceTemplate = require('./Modules/replaceTemplate');
 
 
 
@@ -68,6 +54,8 @@ let server = http.createServer( (req, res) => {
 server.listen(8000, '127.0.0.1', () => {
     console.log('server has started...'); 
 });
+
+
 
 
 
