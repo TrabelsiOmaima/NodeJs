@@ -280,3 +280,32 @@ _ : store value l rslt li 9balha :
 
 
 # 11. Parsing URL & handling Query Strings : /products?id
+
+  - Query Strings = ?id=i
+    let {query, pathname} = url.parse(req.url, true); 
+    query : obj fih all values passed in url //query: [Object: null prototype] { id: '0' },
+
+  - pathname eq URL // '/products',
+
+
+
+  - Code steps :
+
+        - template-product.html : create placeholder {PLACEHOLDER} selon need ...
+        - index.js : read product html file ...   
+        - replace placeholder name with property json value (the new ones)...
+        - get the query part of the url... by destructing req.url obj :
+            let {query, pathname} = url.parse(req.url, true); 
+        
+                
+    }else if (pathname === '/products'){
+    - get info of product i :
+        let prod = pData[query.id];
+
+    - htmltemplate product <-- datajson prod i and send res :
+        let output=  replaceTemplate(product, prod);
+        res.writeHead(200, {   'content-type' : 'text/html', }) ; 
+        res.end(output);
+
+
+
