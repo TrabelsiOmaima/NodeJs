@@ -1,19 +1,36 @@
-// import module section
+// importing core module 
 let fs = require('fs');
 let http = require('http') ;
 let url = require('url');
 
+// importing user defined  module
+let replaceTemplate = require('./Modules/replaceTemplate');
 
-// read file section :
+
+//importing a third party module
+let slugify = require('slugify'); //last part of url (expl .../product_x )
+
+
+// trajja3 a name as string connect by caracter
+let slug = slugify('Apple iPhone XE', {lower: true});
+console.log(slug);
+
 let data = fs.readFileSync(`${__dirname}/dev-data/data.json`, `utf-8`);
 let pData = JSON.parse(data);
+
+
+let pSlugs = pData.map(e => slugify(e.name, {lower: true}));
+console.log(pSlugs);
+ 
+
+
+// read file section :
 let overview = fs.readFileSync(`${__dirname}/templates/template-overview.html`, `utf-8`);
 let card = fs.readFileSync(`${__dirname}/templates/template-card.html`, `utf-8`);
 let product = fs.readFileSync(`${__dirname}/templates/template-product.html`, `utf-8`);
 
 
-// import module : replaceTemplate 
-let replaceTemplate = require('./Modules/replaceTemplate');
+
 
 
 

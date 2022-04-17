@@ -1,55 +1,32 @@
-# NodeJs
-node js basics
+#  NodeJS
+basics of node JS 
 
 
 
 # 1 intro :
- 
-1. intro :
-- any browser natively understand : html , css and javaScript
-- javascript exécute inside the browser , in this case the browser is the js runtime
-- to avoid all the restrictions of the browser , slt : node js
--
- 
 
-Running JavaScript inside Browser
+- any browser natively understand : HTML , CSS and JavaScript
+- JavaScript executed inside the browser , in this case the browser is the JS runtime
+- to avoid all the restrictions of the browser , Solution is  : node js
+- Running JavaScript inside Browser / Running JavaScript Outside Browser
 
 
-
-Running JavaScript Outside Browser
-
-
+# 2.   installation : 
+    done
 
 
+# 3. Running JavaScript Outside Browser
+    just tktb node> w tktb l code js li t7eb 3lih …..
+    .exit (quitter)
 
+    all kind of global variables used by node js :
 
+    f node press 2* tab
 
-
-
-=> repete it marra o5ra   #1
-
-2.   installation : 
-done
-
-
-# 3. running JavaScript Outside Browser
- just tktb node> w tktb l code js li t7eb 3lih …..
-.exit (quitter)
+    _ : store value l rslt li 9balha :
 
 
 
-
-
-
-all kind of global variables used by node js :
-
-
-f node press 2* tab
-
-
-_ : store value l rslt li 9balha :
-
------------------------------------------------------------------------------- l fou9  a verifier ----------------------------------------------
 
 
 # 4. Reading and Writing Files Synchronously :
@@ -334,7 +311,7 @@ _ : store value l rslt li 9balha :
             - import a module : index.js
                 let replaceTemplate = require('./Modules/replaceTemplate');
 
-            - usea module :
+            - use module :
                 let cardHtml =  pData.map( (prod) => replaceTemplate(card, prod)).join(''); 
 
 
@@ -344,8 +321,71 @@ _ : store value l rslt li 9balha :
 
 
 # 13. NPM :
+        - node package manager
+        - npm is a command line interface applications include  with node js
+        - use to install and manage open source package 
+        - istalled auto with node js 
+        - https://www.npmjs.com/ : the repository ( stored all packages(modules) )
+        -  npm is a software that basicly use to manage the code part open source package include and used in yr project.
+
+        - code :
+        npm init // create package.json  (projet configuration file )
 
 
+
+
+# 14. Package types and installs :
+    - install package in the project using npm
+
+
+    - 2 types package can install from npm :
+            + simple/regular dependencies (code to include in our project)
+
+                    npm install slugify :
+                    "dependencies": {
+                        "slugify": "^1.6.5"
+                    }
+
+            + development dependency ( tools for developpemnt, dont need in the code )
+                npm i nodemon  //auto restart node app (case of  change code ) 
+
+    - 2 type install : 
+            + install locally  un iquement this project :
+            "scripts": {
+                "start": "nodemon index.js"
+            },
+
+            npm run start //start server
+
+            + install globaly, all project  : 
+            npm install nodemon -g // sudo npm install -g nodemon
+            nodemon index.js // start server 
+
+
+    + node_module folder : all depen,de,ncy project 
+
+
+
+
+
+
+# 15. Using Third Party Module :
+    - importing core module  (node)
+            let fs = require('fs');
+
+
+    - importing user defined  module (user)
+            let replaceTemplate = require('./Modules/replaceTemplate');
+
+
+    - importing a third party module (npm)
+            let slugify = require('slugify');
+            ( json file
+            "dependencies": {
+                "slugify": "^1.6.5")
+
+        + slugify = last part of url (expl .../apple-iphone-12)
+        + input  "Apple iPhone XE" =>  output selon notre config : "apple-iphone-xe"
 
 
 
